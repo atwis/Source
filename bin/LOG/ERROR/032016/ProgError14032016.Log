@@ -1,0 +1,9 @@
+02.29.52.676 Error,..bpkb_get_cetak_ki%uniSPBiru%Error uniSPBiru: Field 'JML_RODA' not found
+02.30.28.259 Error,..bpkb_get_cetak_ki%uniSPBiru%Error uniSPBiru: Field 'JML_RODA' not found
+02.30.41.657 Error,..bpkb_get_cetak_ki%uniSPBiru%Error uniSPBiru: Field 'JML_RODA' not found
+02.33.50.161 Error,..bpkb_get_cetak_ki%uniSPBiru%Error uniSPBiru: Field 'JML_RODA' not found
+04.03.56.766 Error, SQL statement doesn't return rows
+09.22.43.840 Error,..SelectDataUtama%Error ORA-00904: "A"."PRT_IDINNER": invalid identifier
+
+09.24.04.018 Error,..SelectDataUtama%Error ORA-00904: "A"."PRT_IDINNER": invalid identifier
+

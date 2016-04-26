@@ -1,0 +1,178 @@
+unit uMerk;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, StdCtrls, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore,
+  dxSkinsDefaultPainters, Grids, DBGrids, CRGrid, DB, DBAccess, Uni, MemDS,
+  cxTextEdit;
+
+type
+  TfMerk = class(TForm)
+    Label1: TLabel;
+    Shape1: TShape;
+    Label2: TLabel;
+    eMerkNama: TcxTextEdit;
+    Label3: TLabel;
+    rbR2: TRadioButton;
+    rbR4: TRadioButton;
+    Button1: TButton;
+    Button2: TButton;
+    QMerk: TUniQuery;
+    dsQMerk: TUniDataSource;
+    CRDBGrid1: TCRDBGrid;
+    procedure FormCanResize(Sender: TObject; var NewWidth,
+      NewHeight: Integer; var Resize: Boolean);
+    procedure FormShow(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure CRDBGrid1DblClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    lv_idmerk : String;
+  end;
+
+var
+  fMerk: TfMerk;
+
+implementation
+Uses
+  uDM, uVariabel, uModul;
+{$R *.dfm}
+
+procedure TfMerk.FormCanResize(Sender: TObject; var NewWidth,
+  NewHeight: Integer; var Resize: Boolean);
+begin
+  CRDBGrid1.Columns.Items[0].Width := CRDBGrid1.Width - 180;
+  CRDBGrid1.Columns.Items[1].Width := 120;
+end;
+
+procedure TfMerk.FormShow(Sender: TObject);
+begin
+  eMerkNama.Text := '';
+  rbR2.Checked := False;
+  rbR4.Checked := False;
+  with QMerk do
+  begin
+    Close;
+    SQL.Text := 'select merk_id,merk_nama,r2,merk_nama_r,case when r2=''1'' then ''R2'' else ''R4'' end as r2_detail from m_merk order by merk_id';
+    Open;
+  end;
+  eMerkNama.SetFocus;
+end;
+
+procedure TfMerk.Button2Click(Sender: TObject);
+begin
+  eMerkNama.Text := '';
+  rbR2.Checked := False;
+  rbR4.Checked := False;
+  with QMerk do
+  begin
+    Close;
+    SQL.Text := 'select merk_id,merk_nama,r2,merk_nama_r,case when r2=''1'' then ''R2'' else ''R4'' end as r2_detail  from m_merk order by merk_id';
+    Open;
+  end;
+  eMerkNama.SetFocus;
+end;
+
+procedure TfMerk.Button1Click(Sender: TObject);
+begin
+  if eMerkNama.Text <> '' then
+  begin
+    if (rbR2.Checked = False) and (rbR4.Checked=False) then
+    begin
+      MessageDlg('Termasuk roda 2 atau roda 4 harus dipilih',mtError,[mbOK],0);
+    end
+    else
+    begin
+      if lv_idmerk <> '' then
+      begin
+        if MessageDlg('Yakin data Merk akan dirubah',mtConfirmation,[mbYes,mbNo],0)=mrYes then
+        begin
+          with DM.Q do
+          begin
+            Close;
+            SQL.Text := 'update m_merk set merk_nama=:merk_nama,r2=:r2,merk_nama_r=:merk_nama_r where merk_id=:Merk';
+            try
+              Params[0].AsString := eMerkNama.Text;
+              if rbR2.Checked=True then
+              begin
+                 Params[1].AsString := '1';
+                 Params[2].AsString := eMerkNama.Text + '  (R2)';
+              end
+              else
+              begin
+                 Params[1].AsString := '0';
+                 Params[2].AsString := eMerkNama.Text + '  (R4)';
+              end;
+              Params[3].AsString := lv_idmerk;
+              Execute;
+              Button2.Click;
+            except on E: Exception do
+            begin
+              ErrorProgNoDialog('Error, Insert Data Merk, Ket error '+E.Message);
+            end
+            end;
+          end;
+        end;
+      end
+      else
+      begin
+        if MessageDlg('Yakin data Merk akan ditambahkan',mtConfirmation,[mbYes,mbNo],0)=mrYes then
+        begin
+          with DM.Q do
+          begin
+            Close;
+            SQL.Text := 'insert into m_merk(merk_nama,r2,merk_nama_r) values(:merk_nama,:r2,:merk_nama_r)';
+            try
+              Params[0].AsString := eMerkNama.Text;
+              if rbR2.Checked=True then
+              begin
+                 Params[1].AsString := '1';
+                 Params[2].AsString := eMerkNama.Text + '  (R2)';
+              end
+              else
+              begin
+                 Params[1].AsString := '0';
+                 Params[2].AsString := eMerkNama.Text + '  (R4)';
+              end;
+              Execute;
+              Button2.Click;
+            except on E: Exception do
+            begin
+              ErrorProgNoDialog('Error, Insert Data Merk, Ket error '+E.Message);
+            end
+            end;
+          end;
+        end;
+      end;
+    end;
+  end
+  else
+  begin
+    MessageDlg('Nama Merk Harus diisi',mtError,[mbOK],0);
+    eMerkNama.SetFocus;
+  end;
+end;
+
+procedure TfMerk.CRDBGrid1DblClick(Sender: TObject);
+begin
+  lv_idmerk := '';
+  if (QMerk.Active) and (QMerk.RecordCount > 0) then
+  begin
+    //merk_id,merk_nama,r2,merk_nama_r
+    lv_idmerk := QMerk.Fields[0].AsString;
+    eMerkNama.Text := QMerk.Fields[1].AsString;
+    if QMerk.Fields[2].AsString = '1' then
+       rbR2.Checked := True
+    else
+       rbR4.Checked := True;
+    eMerkNama.SetFocus;
+  end;
+end;
+
+end.

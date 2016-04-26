@@ -1,0 +1,425 @@
+unit uDataLapBPKB;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ExtCtrls, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, dxSkinsCore, dxSkinsDefaultPainters,
+  dxSkinscxPCPainter, cxStyles, cxCustomData, cxFilter, cxData,
+  cxDataStorage, cxEdit, DB, cxDBData, cxCalendar, cxDBLookupComboBox,
+  cxCheckBox, cxContainer, Menus, cxTextEdit, cxVGrid, cxDBVGrid, DBCtrls,
+  cxInplaceContainer, cxButtons, cxMaskEdit, cxDropDownEdit, cxGridLevel,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
+  cxGridCustomView, cxGrid, cxPC, Uni, DBAccess, MemDS;
+
+type
+  TfDataLapBPKB = class(TForm)
+    Shape1: TShape;
+    lJudul: TLabel;
+    uniSPTampil: TUniStoredProc;
+    dsQDeatail: TUniDataSource;
+    Q: TUniQuery;
+    Q2: TUniQuery;
+    QPemohon1: TUniQuery;
+    dsQPemohon1: TUniDataSource;
+    dsQPemohon2: TUniDataSource;
+    QPemohon2: TUniQuery;
+    QPetugas1: TUniQuery;
+    dsQPetugas1: TUniDataSource;
+    dsQPetugas2: TUniDataSource;
+    QPetugas2: TUniQuery;
+    dsQHistory: TUniDataSource;
+    QHistory: TUniQuery;
+    dsQDataUtama: TUniDataSource;
+    QDataUtama: TUniQuery;
+    QCetakBPKB: TUniQuery;
+    dsQCetakBPKB: TUniDataSource;
+    QHistNamaPemilik: TUniQuery;
+    dsQHistNamaPemilik: TUniDataSource;
+    dsQHistAlamat: TUniDataSource;
+    QHistAlamat: TUniQuery;
+    dsQPenerbitanBPKB: TUniDataSource;
+    QPenerbitanBPKB: TUniQuery;
+    QPendaftaran: TUniQuery;
+    dsQPendaftaran: TUniDataSource;
+    QBentuk: TUniQuery;
+    dsQBentuk: TUniDataSource;
+    dsQHistBlokir: TUniDataSource;
+    QHistBlokir: TUniQuery;
+    dsQTukar: TUniDataSource;
+    QTukar: TUniQuery;
+    uniSPTampilBPKBTukar: TUniStoredProc;
+    dsuniSPTampilBPKBTukar: TUniDataSource;
+    QHistNopol: TUniQuery;
+    dsQHistNopol: TUniDataSource;
+    dsQHistWarna: TUniDataSource;
+    QHistWarna: TUniQuery;
+    qPRB: TUniQuery;
+    dsqPRB: TUniDataSource;
+    dsQImpMetode: TUniDataSource;
+    QImpMetode: TUniQuery;
+    QJD: TUniQuery;
+    dsQJD: TUniDataSource;
+    dsQMerk: TUniDataSource;
+    QMerk: TUniQuery;
+    QBB: TUniQuery;
+    dsQBB: TUniDataSource;
+    dsQModel: TUniDataSource;
+    QModel: TUniQuery;
+    QJenis: TUniQuery;
+    dsQJenis: TUniDataSource;
+    dsQWarna: TUniDataSource;
+    QWarna: TUniQuery;
+    QPeruntukan: TUniQuery;
+    dsQPeruntukan: TUniDataSource;
+    dsQOperator: TUniDataSource;
+    QOperator: TUniQuery;
+    QPemohon: TUniQuery;
+    dsQPemohon: TUniDataSource;
+    dsQWilayah: TUniDataSource;
+    QWilayah: TUniQuery;
+    QWarnaTNKB: TUniQuery;
+    dsQWarnaTNKB: TUniDataSource;
+    cxPageControl1: TcxPageControl;
+    cxTabSheet1: TcxTabSheet;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Shape2: TShape;
+    Label8: TLabel;
+    cxGrid: TcxGrid;
+    cxGridDBTableView1: TcxGridDBTableView;
+    cxGridDBTableView1Column1: TcxGridDBColumn;
+    cxGridDBTableView1Column2: TcxGridDBColumn;
+    cxGridDBTableView1Column3: TcxGridDBColumn;
+    cxGridDBTableView1Column7: TcxGridDBColumn;
+    cxGridDBTableView1Column13: TcxGridDBColumn;
+    cxGridDBTableView1Column16: TcxGridDBColumn;
+    cxGridDBTableView1Column5: TcxGridDBColumn;
+    cxGridDBTableView1Column6: TcxGridDBColumn;
+    cxGridDBTableView1Column8: TcxGridDBColumn;
+    cxGridDBTableView1Column9: TcxGridDBColumn;
+    cxGridDBTableView1Column10: TcxGridDBColumn;
+    cxGridDBTableView1Column11: TcxGridDBColumn;
+    cxGridDBTableView1Column12: TcxGridDBColumn;
+    cxGridDBTableView1Column14: TcxGridDBColumn;
+    cxGridDBTableView1Column15: TcxGridDBColumn;
+    cxGridDBTableView1Column4: TcxGridDBColumn;
+    cxGridLevel1: TcxGridLevel;
+    cbNoBPKB: TcxComboBox;
+    cbNRegBPKB: TcxComboBox;
+    cbNoPolisi: TcxComboBox;
+    cbNoRangka: TcxComboBox;
+    cbNoMesin: TcxComboBox;
+    cbNamaPemilik: TcxComboBox;
+    cbNoFaktur: TcxComboBox;
+    eNoBPKB: TcxTextEdit;
+    eNRegBPKB: TcxTextEdit;
+    eNoPolisi: TcxTextEdit;
+    eNoRangka: TcxTextEdit;
+    eNoMesin: TcxTextEdit;
+    eNamaPemilik: TcxTextEdit;
+    eNoFaktur: TcxTextEdit;
+    bCari: TcxButton;
+    cxTabSheet2: TcxTabSheet;
+    cxPageControl2: TcxPageControl;
+    cxTabSheet3: TcxTabSheet;
+    cxDBVerticalGrid2: TcxDBVerticalGrid;
+    cxDBVerticalGrid2NO_BPKB: TcxDBEditorRow;
+    cxDBVerticalGrid2TGL_BPKB: TcxDBEditorRow;
+    cxDBVerticalGrid2TGL_FAKTUR: TcxDBEditorRow;
+    cxDBVerticalGrid2NO_RANGKA: TcxDBEditorRow;
+    cxDBVerticalGrid2NO_MESIN: TcxDBEditorRow;
+    cxDBVerticalGrid2NREG_BPKB: TcxDBEditorRow;
+    cxDBVerticalGrid2JML_RODA: TcxDBEditorRow;
+    cxDBVerticalGrid2THN_BUAT: TcxDBEditorRow;
+    cxDBVerticalGrid2THN_RAKIT: TcxDBEditorRow;
+    cxDBVerticalGrid2JML_SUMBU: TcxDBEditorRow;
+    cxDBVerticalGrid2VOL_SILINDER: TcxDBEditorRow;
+    cxDBVerticalGrid2BB_ID: TcxDBEditorRow;
+    cxDBVerticalGrid2MERK_ID: TcxDBEditorRow;
+    cxDBVerticalGrid2TIPE: TcxDBEditorRow;
+    cxDBVerticalGrid2JENIS_ID: TcxDBEditorRow;
+    cxDBVerticalGrid2NO_UJI_TIPE: TcxDBEditorRow;
+    cxDBVerticalGrid2NO_UJI_BERKALA: TcxDBEditorRow;
+    cxDBVerticalGrid2JD_ID: TcxDBEditorRow;
+    cxDBVerticalGrid2TEMPAT_KELUAR: TcxDBEditorRow;
+    cxDBVerticalGrid2NO_PABEAN: TcxDBEditorRow;
+    cxDBVerticalGrid2TGL_PABEAN: TcxDBEditorRow;
+    cxDBVerticalGrid2PELABUHAN: TcxDBEditorRow;
+    cxDBVerticalGrid2IMPMTHD_ID: TcxDBEditorRow;
+    cxDBVerticalGrid2NO_FAKTUR: TcxDBEditorRow;
+    cxDBVerticalGrid2NO_CKD: TcxDBEditorRow;
+    cxDBVerticalGrid2KETR_PABEAN: TcxDBEditorRow;
+    cxDBVerticalGrid2PRT_ID: TcxDBEditorRow;
+    cxDBVerticalGrid2BPKB_STATUS: TcxDBEditorRow;
+    cxDBVerticalGrid2DUP_NR_COUNT: TcxDBEditorRow;
+    cxDBVerticalGrid2DUP_NM_COUNT: TcxDBEditorRow;
+    cxDBVerticalGrid2INACTIVE_DATE: TcxDBEditorRow;
+    cxDBVerticalGrid2CURRENT_HISTID: TcxDBEditorRow;
+    cxDBVerticalGrid2TGL_PIB: TcxDBEditorRow;
+    cxDBVerticalGrid2NAMA_IMPORTIR: TcxDBEditorRow;
+    cxDBVerticalGrid2IS_BBN2: TcxDBEditorRow;
+    cxDBVerticalGrid2NO_PIB: TcxDBEditorRow;
+    cxDBVerticalGrid2POLDA_ID: TcxDBEditorRow;
+    cxDBVerticalGrid2POLRES_ID: TcxDBEditorRow;
+    cxDBVerticalGrid2NO_TPT: TcxDBEditorRow;
+    DBNavigator1: TDBNavigator;
+    cxTabSheet4: TcxTabSheet;
+    cxDBVerticalGrid1: TcxDBVerticalGrid;
+    cxCategoryPendaftaran: TcxCategoryRow;
+    cxDBMultiPendaftaran: TcxDBMultiEditorRow;
+    cxCatergoryEntryData: TcxCategoryRow;
+    cxDBMultiEntryData: TcxDBMultiEditorRow;
+    cxCategoryCetakKI: TcxCategoryRow;
+    cxDBMultiKI: TcxDBMultiEditorRow;
+    cxCategoryVerifikasi: TcxCategoryRow;
+    cxDBverifikasi: TcxDBMultiEditorRow;
+    cxCategoryCetakBPKB: TcxCategoryRow;
+    cxDBMultiCetakBPKB: TcxDBMultiEditorRow;
+    cxCategoryTandaTeriam: TcxCategoryRow;
+    cxDBMultiEditorTandaTerima: TcxDBMultiEditorRow;
+    cxCategoryPenyerahan: TcxCategoryRow;
+    cxMultiPenyerahan: TcxDBMultiEditorRow;
+    DBNavigator2: TDBNavigator;
+    cxTabSheet6: TcxTabSheet;
+    cxDBVerticalGrid3: TcxDBVerticalGrid;
+    cxDBVerticalGrid3CategoryRow1: TcxCategoryRow;
+    cxDBVerticalGrid3DBEditorRow1: TcxDBEditorRow;
+    cxDBVerticalGrid3DBEditorRow2: TcxDBEditorRow;
+    cxDBVerticalGrid3DBEditorRow3: TcxDBEditorRow;
+    cxDBVerticalGrid3DBEditorRow4: TcxDBEditorRow;
+    cxDBVerticalGrid3DBEditorRow5: TcxDBEditorRow;
+    cxDBVerticalGrid3DBEditorRow6: TcxDBEditorRow;
+    cxDBVerticalGrid3DBEditorRow7: TcxDBEditorRow;
+    cxDBVerticalGrid3DBEditorRow8: TcxDBEditorRow;
+    cxDBVerticalGrid3DBEditorRow9: TcxDBEditorRow;
+    cxDBVerticalGrid3CategoryRow2: TcxCategoryRow;
+    cxDBVerticalGrid3DBEditorRow10: TcxDBEditorRow;
+    cxDBVerticalGrid3DBEditorRow11: TcxDBEditorRow;
+    cxDBVerticalGrid3DBEditorRow12: TcxDBEditorRow;
+    DBNavigator3: TDBNavigator;
+    cxTabSheet7: TcxTabSheet;
+    cxPageControl3: TcxPageControl;
+    cxTabSheet5: TcxTabSheet;
+    DBNavigator4: TDBNavigator;
+    cxGrid2: TcxGrid;
+    cxGridDBTableView3: TcxGridDBTableView;
+    cxGridDBColumn5: TcxGridDBColumn;
+    cxGridDBColumn6: TcxGridDBColumn;
+    cxGridDBColumn7: TcxGridDBColumn;
+    cxGridDBColumn8: TcxGridDBColumn;
+    cxGridDBColumn9: TcxGridDBColumn;
+    cxGridDBColumn10: TcxGridDBColumn;
+    cxGridDBColumn11: TcxGridDBColumn;
+    cxGridDBColumn12: TcxGridDBColumn;
+    cxGridDBColumn16: TcxGridDBColumn;
+    cxGridDBColumn13: TcxGridDBColumn;
+    cxGridDBColumn14: TcxGridDBColumn;
+    cxGridDBColumn15: TcxGridDBColumn;
+    cxGridDBColumn17: TcxGridDBColumn;
+    cxGridDBColumn18: TcxGridDBColumn;
+    cxGridLevel3: TcxGridLevel;
+    cxPageControl4: TcxPageControl;
+    cxTabSheet18: TcxTabSheet;
+    DBNavigator5: TDBNavigator;
+    cxGrid8: TcxGrid;
+    cxGridDBTableView9: TcxGridDBTableView;
+    cxGridDBColumn28: TcxGridDBColumn;
+    cxGridDBColumn29: TcxGridDBColumn;
+    cxGridDBColumn30: TcxGridDBColumn;
+    cxGridDBTableView9Column1: TcxGridDBColumn;
+    cxGridLevel9: TcxGridLevel;
+    cxTabSheet19: TcxTabSheet;
+    cxGrid3: TcxGrid;
+    cxGridDBTableView4: TcxGridDBTableView;
+    cxGridDBColumn19: TcxGridDBColumn;
+    cxGridDBColumn20: TcxGridDBColumn;
+    cxGridDBColumn21: TcxGridDBColumn;
+    cxGridDBColumn22: TcxGridDBColumn;
+    cxGridDBColumn23: TcxGridDBColumn;
+    cxGridDBColumn24: TcxGridDBColumn;
+    cxGridDBColumn25: TcxGridDBColumn;
+    cxGridLevel4: TcxGridLevel;
+    DBNavigator6: TDBNavigator;
+    cxTabSheet20: TcxTabSheet;
+    cxGrid4: TcxGrid;
+    cxGridDBTableView5: TcxGridDBTableView;
+    cxGridDBColumn26: TcxGridDBColumn;
+    cxGridDBColumn27: TcxGridDBColumn;
+    cxGridLevel5: TcxGridLevel;
+    DBNavigator7: TDBNavigator;
+    cxTabSheet21: TcxTabSheet;
+    cxGrid6: TcxGrid;
+    cxGridDBTableView7: TcxGridDBTableView;
+    cxGridDBColumn40: TcxGridDBColumn;
+    cxGridDBColumn41: TcxGridDBColumn;
+    cxGridDBColumn42: TcxGridDBColumn;
+    cxGridLevel7: TcxGridLevel;
+    DBNavigator9: TDBNavigator;
+    cxTabSheet22: TcxTabSheet;
+    cxGrid7: TcxGrid;
+    cxGridDBTableView8: TcxGridDBTableView;
+    cxGridDBColumn47: TcxGridDBColumn;
+    cxGridLevel8: TcxGridLevel;
+    DBNavigator10: TDBNavigator;
+    cxButton2: TcxButton;
+    cxTabSheet8: TcxTabSheet;
+    cxGrid1: TcxGrid;
+    cxGridDBTableView2: TcxGridDBTableView;
+    cxGridDBColumn1: TcxGridDBColumn;
+    cxGridDBColumn2: TcxGridDBColumn;
+    cxGridDBColumn3: TcxGridDBColumn;
+    cxGridDBColumn4: TcxGridDBColumn;
+    cxGridLevel2: TcxGridLevel;
+    cxTabSheet9: TcxTabSheet;
+    cxGrid5: TcxGrid;
+    cxGridDBTableView6: TcxGridDBTableView;
+    cxGridDBColumn33: TcxGridDBColumn;
+    cxGridDBColumn34: TcxGridDBColumn;
+    cxGridDBColumn35: TcxGridDBColumn;
+    cxGridDBColumn36: TcxGridDBColumn;
+    cxGridDBColumn37: TcxGridDBColumn;
+    cxGridDBColumn38: TcxGridDBColumn;
+    cxGridDBColumn39: TcxGridDBColumn;
+    cxGridDBTableView6Column1: TcxGridDBColumn;
+    cxGridDBTableView6Column2: TcxGridDBColumn;
+    cxGridDBTableView6Column3: TcxGridDBColumn;
+    cxGridDBTableView6Column4: TcxGridDBColumn;
+    cxGridDBTableView6Column5: TcxGridDBColumn;
+    cxGridDBTableView6Column6: TcxGridDBColumn;
+    cxGridDBTableView6Column7: TcxGridDBColumn;
+    cxGridDBTableView6Column8: TcxGridDBColumn;
+    cxGridDBTableView6Column9: TcxGridDBColumn;
+    cxGridDBTableView6Column10: TcxGridDBColumn;
+    cxGridDBTableView6Column11: TcxGridDBColumn;
+    cxGridDBTableView6Column12: TcxGridDBColumn;
+    cxGridDBTableView6Column13: TcxGridDBColumn;
+    cxGridDBTableView6Column14: TcxGridDBColumn;
+    cxGridDBTableView6Column15: TcxGridDBColumn;
+    cxGridLevel6: TcxGridLevel;
+    DBNavigator8: TDBNavigator;
+    cxTabSheet10: TcxTabSheet;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    tStatusData : String; // 1=jk data ditemukan di t_bpkb_master, 2=jika ditemukan di t_berkas
+    procedure RefreshImpMetode;
+    procedure RefreshJD;
+    procedure RefreshMerk;
+    procedure RefreshBB;
+    procedure RefreshModel;
+    procedure RefreshJenis;
+    procedure RefreshWarna;
+    {procedure RefreshPeruntukan;
+    procedure RefreshOperator;
+    procedure RefreshPemohon;
+    procedure RefreshDataUtama;
+    procedure RefreshCetakBPKB;
+    procedure RefreshStatusPenerbitanBPKB;
+    procedure RefreshPendaftaran;
+    procedure RefreshDataBPKBTukar;
+    procedure SimpanTukarBPKB;
+    procedure RefreshPerubahan;
+    procedure RefreshHistory;
+    procedure RefreshHistoryNamaPemilik;
+    procedure RefreshHistoryAlamatPemilik;
+    procedure RefreshWilayah;
+    procedure RefreshBentuk;
+    procedure RefreshBlokir;
+    procedure RefreshHistoryNopol;
+    procedure RefreshHistoryWarna;
+    procedure RefreshWarnaTNKB;
+    function NoResiPembayaranBank:String;
+    procedure RefreshCbPemohon;
+    procedure RefreshCbPetugas;
+    procedure TukarBPKB;}
+  end;
+
+var
+  fDataLapBPKB: TfDataLapBPKB;
+
+implementation
+Uses
+  uDM, uVariabel, uModul, uWait;
+{$R *.dfm}
+
+{ TfDataLapBPKB }
+
+procedure TfDataLapBPKB.RefreshBB;
+begin
+  with QBB do
+  begin
+    Close;
+    SQL.Text := 'SELECT BB_ID,BB_NAMA FROM M_BAHANBAKAR ORDER BY BB_NAMA';
+    Open;
+  end;
+end;
+
+procedure TfDataLapBPKB.RefreshImpMetode;
+begin
+  with QImpMetode do
+  begin
+    Close;
+    SQL.Text := 'SELECT IMPMTHD_ID,IMPMTHD_NAME FROM M_CARA_IMPOR ORDER BY IMPMTHD_NAME';
+    Open;
+  end;
+end;
+
+procedure TfDataLapBPKB.RefreshJD;
+begin
+  with QJD do
+  begin
+    Close;
+    SQL.Text := 'SELECT JD_ID,JD_NAMA FROM M_JENIS_DAFTARAN ORDER BY JD_NAMA';
+    Open;
+  end;
+end;
+
+procedure TfDataLapBPKB.RefreshJenis;
+begin
+  with QJenis do
+  begin
+    Close;
+    SQL.Text := 'SELECT JENIS_ID,JENIS_NAMA FROM M_JENIS ORDER BY JENIS_NAMA';
+    Open;
+  end;
+end;
+
+procedure TfDataLapBPKB.RefreshMerk;
+begin
+  with QMerk do
+  begin
+    Close;
+    SQL.Text := 'SELECT MERK_ID,MERK_NAMA_R FROM M_MERK ORDER BY MERK_NAMA_R';
+    Open;
+  end;
+end;
+
+procedure TfDataLapBPKB.RefreshModel;
+begin
+  with QModel do
+  begin
+    Close;
+    SQL.Text := 'SELECT MODEL_ID,MODEL_NAMA FROM M_MODEL ORDER BY MODEL_NAMA';
+    Open;
+  end;
+end;
+
+procedure TfDataLapBPKB.RefreshWarna;
+begin
+  with QWarna do
+  begin
+    Close;
+    SQL.Text := 'SELECT WARNA_ID,WARNA_NAMA FROM M_WARNA ORDER BY WARNA_NAMA';
+    Open;
+  end;
+end;
+
+end.

@@ -1,0 +1,3 @@
+07:34:43:134 Gagal koneksi ke database 192.68.117.128:1521:orclError: NET: Network error (Cannot connect to server on host '192.68.117.128':
+A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+Socket Error Code: 10060($274C))<Host = 192.68.117.128:1521> 

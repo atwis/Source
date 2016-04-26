@@ -1,0 +1,9 @@
+09:05:42:715 Error, ConnectDataBase --> NET: Network error (Cannot connect to server on host '222.124.27.171':
+No connection could be made because the target machine actively refused it.
+Socket Error Code: 10061($274D))<Host = 222.124.27.171:1521> 
+10:04:48:848 Error, Edit Data Bahan Bakar, Ket error ORA-12899: value too large for column "DBSIFIK"."M_BAHANBAKAR"."BB_NAMA" (actual: 21, maximum: 20)
+
+10:04:56:657 Error, Edit Data Bahan Bakar, Ket error ORA-12899: value too large for column "DBSIFIK"."M_BAHANBAKAR"."BB_NAMA" (actual: 21, maximum: 20)
+
+10:05:03:154 Error, Edit Data Bahan Bakar, Ket error ORA-12899: value too large for column "DBSIFIK"."M_BAHANBAKAR"."BB_NAMA" (actual: 21, maximum: 20)
+

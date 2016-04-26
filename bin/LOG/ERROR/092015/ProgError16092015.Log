@@ -1,0 +1,12 @@
+20:04:30:210 Error, ConnectDataBase --> NET: Network error (Cannot connect to server on host '192.168.117.128':
+A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+Socket Error Code: 10060($274C))<Host = 192.168.117.128:1521> 
+20:05:20:526 Gagal koneksi ke database localhost:1521:orclError: NET: Network error (Cannot connect to server on host 'localhost':
+No connection could be made because the target machine actively refused it.
+Socket Error Code: 10061($274D))<Host = localhost:1521> 
+20:05:32:672 Gagal koneksi ke database localhost:1521:orclError: NET: Network error (Cannot connect to server on host 'localhost':
+No connection could be made because the target machine actively refused it.
+Socket Error Code: 10061($274D))<Host = localhost:1521> 
+23:45:54:706 Error, ConnectDataBase --> NET: Network error (Cannot connect to server on host '192.168.117.128':
+A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+Socket Error Code: 10060($274C))<Host = 192.168.117.128:1521> 

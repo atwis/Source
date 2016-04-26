@@ -1,0 +1,46 @@
+object fWait: TfWait
+  Left = 363
+  Top = 194
+  Width = 524
+  Height = 128
+  BorderIcons = [biSystemMenu]
+  Caption = 'Tunggu Sebentar ...'
+  Color = clSkyBlue
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  ScreenSnap = True
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 4
+    Top = 0
+    Width = 379
+    Height = 36
+    Caption = 'TUNGGU SEBENTAR . . . . . . . .'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -27
+    Font.Name = 'Palatino Linotype'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+  end
+  object cxProgressBar1: TcxProgressBar
+    Left = 14
+    Top = 41
+    ParentFont = False
+    Style.Font.Charset = ANSI_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -19
+    Style.Font.Name = 'Tahoma'
+    Style.Font.Style = []
+    Style.IsFontAssigned = True
+    TabOrder = 0
+    Width = 490
+  end
+end

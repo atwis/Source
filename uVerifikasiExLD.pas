@@ -1,0 +1,353 @@
+unit uVerifikasiExLD;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, Menus,
+  cxControls, cxContainer, cxEdit, cxMaskEdit, cxDropDownEdit, cxCalendar,
+  cxMemo, cxPC, cxTextEdit, StdCtrls, cxButtons, ExtCtrls, DBAccess, Uni, MemDS, DB,
+  dxSkinsCore, dxSkinsDefaultPainters, dxSkinscxPCPainter;
+
+type
+  TfVerifikasiExLD = class(TForm)
+    Label1: TLabel;
+    Shape1: TShape;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Shape2: TShape;
+    Shape3: TShape;
+    Label39: TLabel;
+    Label40: TLabel;
+    Label41: TLabel;
+    Label42: TLabel;
+    Label35: TLabel;
+    cxButton1: TcxButton;
+    bVerifikasi: TcxButton;
+    eNoBPKB_V: TcxTextEdit;
+    eNoRangka_V: TcxTextEdit;
+    eNoBarcode_V: TcxTextEdit;
+    eInfoNoBPKB_V: TcxTextEdit;
+    eInfoNRegBPKB_V: TcxTextEdit;
+    eInfoTempat_V: TcxTextEdit;
+    eInfoTgl_V: TcxTextEdit;
+    cxPageControl1: TcxPageControl;
+    cxTabSheet1: TcxTabSheet;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    eInfoPekerjaan_V: TcxTextEdit;
+    eInfoNoIdentitas_V: TcxTextEdit;
+    eInfoNamaPemilik_V: TcxMemo;
+    eInfoAlamatPemilik_V: TcxMemo;
+    cxTabSheet2: TcxTabSheet;
+    Label9: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Label16: TLabel;
+    Label17: TLabel;
+    Label18: TLabel;
+    Label19: TLabel;
+    Label20: TLabel;
+    Label21: TLabel;
+    eInfoNopol_V: TcxTextEdit;
+    eInfoMek_V: TcxTextEdit;
+    eInfoTipe_V: TcxTextEdit;
+    eInfoJenis_V: TcxTextEdit;
+    eInfoModel_V: TcxTextEdit;
+    eInfoThnBuat_V: TcxTextEdit;
+    eInfoSilinder_V: TcxTextEdit;
+    eInfoWarna_V: TcxTextEdit;
+    eInfoNoRangka_V: TcxTextEdit;
+    eInfoNoMesin_V: TcxTextEdit;
+    eInfoJmlRoda_V: TcxTextEdit;
+    eInfoJmlSumbu_V: TcxTextEdit;
+    eInfoBB_V: TcxTextEdit;
+    cxTabSheet3: TcxTabSheet;
+    Label22: TLabel;
+    Label23: TLabel;
+    Label24: TLabel;
+    Label25: TLabel;
+    Label26: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
+    Label29: TLabel;
+    Label30: TLabel;
+    Label31: TLabel;
+    Label32: TLabel;
+    eInfoNoFaktur_V: TcxTextEdit;
+    eInfoTglFaktur_V: TcxTextEdit;
+    eInfoAPM_V: TcxTextEdit;
+    eInfoTglFormAB_V: TcxTextEdit;
+    eInfoKantorBeaCukai_V: TcxTextEdit;
+    eInfoNoSUT_V: TcxTextEdit;
+    eInfoNoTPT_V: TcxTextEdit;
+    eInfoKetLain2_V: TcxMemo;
+    eInfoNoPIB_V: TcxTextEdit;
+    eInfoTglPIB_V: TcxTextEdit;
+    eInfoNoFormAB_V: TcxTextEdit;
+    cxTabSheet4: TcxTabSheet;
+    Label33: TLabel;
+    Label34: TLabel;
+    eInfoDikeluarkanOleh_V: TcxTextEdit;
+    eInfoNRegBPKB2_V: TcxTextEdit;
+    bBaru_V: TcxButton;
+    dtTgl: TcxDateEdit;
+    procedure FormShow(Sender: TObject);
+    procedure cxButton1Click(Sender: TObject);
+    procedure bBaru_VClick(Sender: TObject);
+    procedure bVerifikasiClick(Sender: TObject);
+  private
+    { Private declarations }
+    vIsBBN : sTRING; // jenis proses bbn
+    vBPKBID_V,vBerkasID_V : String;
+  public
+    { Public declarations }
+    procedure TampilAwal;
+    procedure CariData;
+    procedure UpdateVerfikasi;
+  end;
+
+var
+  fVerifikasiExLD: TfVerifikasiExLD;
+
+implementation
+Uses
+  uDM, uVariabel, uModul, uWait;
+{$R *.dfm}
+
+{ TfVerifikasiExLD }
+
+procedure TfVerifikasiExLD.CariData;
+var
+  uniSP : TUniStoredProc;
+begin
+  try
+    fWait.Show;
+    Application.ProcessMessages;
+    uniSP := TUniStoredProc.Create(Application);
+    uniSP.Connection := DM.dbSrv;
+    uniSP.Close;
+    uniSP.StoredProcName := 'bpkb_get_data_bpkb_verifikasi';
+    try
+      uniSP.Params.Clear;
+      uniSP.Params.CreateParam(ftString,'v_polda_id',ptInput).AsString := vPOLDAID;
+      uniSP.Params.CreateParam(ftString,'v_polres_id',ptInput).AsString := vPOLRESID;
+      uniSP.Params.CreateParam(ftString,'v_no_bpkb',ptInput).AsString := eNoBPKB_V.Text;
+      uniSP.Params.CreateParam(ftString,'v_no_rangka',ptInput).AsString := eNoRangka_V.Text;
+      uniSP.Params.CreateParam(ftString,'v_no_barcode',ptInput).AsString := eNoBarcode_V.Text;
+      uniSP.Params.CreateParam(ftString,'v_bbn',ptInput).AsString := vIsBBN;
+      uniSP.Params.CreateParam(ftCursor,'CUR',ptOutput).Value;
+      uniSP.Active := True;
+
+      if uniSP.RecordCount > 0 then
+      begin
+        vBPKBID_V := uniSP.FieldByName('BPKB_ID').Text;
+        vBerkasID_V := uniSP.FieldByName('BERKAS_ID').Text;
+        eInfoNoBPKB_V.Text := uniSP.FieldByName('NO_BPKB').Text;
+        eInfoNRegBPKB_V.Text := uniSP.FieldByName('NREG_BPKB').Text;
+        eInfoTempat_V.Text := uniSP.FieldByName('TEMPAT_KELUAR').Text;
+        eInfoTgl_V.Text := uniSP.FieldByName('TGL_BPKB').Text;
+        eInfoPekerjaan_V.Text := uniSP.FieldByName('PEKERJAAN_PEMILIK').Text;
+        eInfoNoIdentitas_V.Text := uniSP.FieldByName('NO_IDENTITAS').Text;
+        eInfoNamaPemilik_V.Text := uniSP.FieldByName('NAMA_PEMILIK').Text;
+        eInfoAlamatPemilik_V.Text := uniSP.FieldByName('ALAMAT_PEMILIK').Text;
+        eInfoNopol_V.Text := uniSP.FieldByName('NO_POLISI').Text;
+        eInfoMek_V.Text := uniSP.FieldByName('MERK_NAMA').Text;
+        eInfoTipe_V.Text := uniSP.FieldByName('TIPE').Text;
+        eInfoJenis_V.Text := uniSP.FieldByName('JENIS_NAMA').Text;
+        eInfoModel_V.Text := uniSP.FieldByName('MODEL_NAMA').Text;
+        eInfoThnBuat_V.Text := uniSP.FieldByName('THN_BUAT').Text;
+        eInfoSilinder_V.Text := uniSP.FieldByName('VOL_SILINDER').Text;
+        eInfoWarna_V.Text := uniSP.FieldByName('WARNA_NAMA').Text;
+        eInfoNoRangka_V.Text := uniSP.FieldByName('NO_RANGKA').Text;
+        eInfoNoMesin_V.Text := uniSP.FieldByName('NO_MESIN').Text;
+        eInfoJmlRoda_V.Text := uniSP.FieldByName('JML_RODA').Text;
+        eInfoJmlSumbu_V.Text := uniSP.FieldByName('JML_SUMBU').Text;
+        eInfoBB_V.Text := uniSP.FieldByName('BB_NAMA').Text;
+        eInfoNoFaktur_V.Text := uniSP.FieldByName('NO_FAKTUR').Text;
+        eInfoTglFaktur_V.Text := uniSP.FieldByName('TGL_FAKTUR').Text;
+        eInfoAPM_V.Text := uniSP.FieldByName('NAMA_IMPORTIR').Text;
+        eInfoTglFormAB_V.Text := uniSP.FieldByName('TGL_PABEAN').Text;
+        eInfoKantorBeaCukai_V.Text := uniSP.FieldByName('PELABUHAN').Text;
+        eInfoNoSUT_V.Text := uniSP.FieldByName('NO_SUT').Text;
+        eInfoNoTPT_V.Text := uniSP.FieldByName('NO_TPT').Text;
+        eInfoKetLain2_V.Text := uniSP.FieldByName('KETR_PABEAN').Text;
+        eInfoNoPIB_V.Text := uniSP.FieldByName('NO_PIB').Text;
+        eInfoTglPIB_V.Text := uniSP.FieldByName('TGL_PIB').Text;
+        eInfoNoFormAB_V.Text := uniSP.FieldByName('NO_PABEAN').Text;
+        eInfoDikeluarkanOleh_V.Text := vBPKBDikeluarkanOleh ;
+        eInfoNRegBPKB2_V.Text := uniSP.FieldByName('NREG_BPKB').Text;
+        cxPageControl1.ActivePage := cxTabSheet1;
+        if uniSP.FieldByName('VERIFY_BY').Text='0' then
+        begin
+          fWait.Hide;
+          Application.ProcessMessages;
+          bVerifikasi.Enabled := True;
+          bVerifikasi.SetFocus;
+        end
+        else if uniSP.FieldByName('VERIFY_BY').Text='1' then
+        begin
+          fWait.Hide;
+          Application.ProcessMessages;
+          bVerifikasi.Enabled := False;
+          MessageDlgInformation('DATA SUDAH TER-VERIFIKASI!!!');
+        end
+        else
+        begin
+          fWait.Hide;
+          Application.ProcessMessages;
+          bVerifikasi.Enabled := False;
+          MessageDlgError('KODE VERIFIKASI TIDAK TERDAFTAR'+#13+
+                     'HUBUNGI ADMINISTRATOR');
+        end;
+      end
+      else
+      begin
+        FWait.Hide;
+        Application.ProcessMessages;
+        MessageDlgInformation('DATA TIDAK DITEMUKAN!!');
+      end;
+    except on E:Exception do
+    begin
+      ErrorProgDialog('Error,..bpkb_get_data_bpkb_verifikasi.Open%Error :'+E.Message);
+    end;
+    end;
+  finally
+    FreeAndNil(uniSP);
+  end;
+end;
+
+procedure TfVerifikasiExLD.TampilAwal;
+begin
+  //'1=GANTI NAMA; 2=MUTASI KELUAR; 3=EX LUAR DAERAH; 4=GANTI BUKU; 5=DUPLIKAT';
+  vIsBBN := '3';
+  eNoBPKB_V.Text := '';
+  eNoRangka_V.Text := '';
+  eNoBarcode_V.Text := '';
+  bVerifikasi.Enabled := False;
+  bBaru_V.Enabled := True;
+  eInfoNoBPKB_V.Text := '';
+  eInfoNRegBPKB_V.Text := '';
+  eInfoTempat_V.Text := '';
+  eInfoTgl_V.Text := '';
+  eInfoNamaPemilik_V.Text := '';
+  eInfoAlamatPemilik_V.Text := '';
+  eInfoPekerjaan_V.Text := '';
+  eInfoNoIdentitas_V.Text := '';
+  eInfoNopol_V.Text := '';
+  eInfoMek_V.Text := '';
+  eInfoTipe_V.Text := '';
+  eInfoJenis_V.Text := '';
+  eInfoModel_V.Text := '';
+  eInfoThnBuat_V.Text := '';
+  eInfoSilinder_V.Text := '';
+  eInfoWarna_V.Text := '';
+  eInfoNoRangka_V.Text := '';
+  eInfoNoMesin_V.Text := '';
+  eInfoJmlRoda_V.Text := '';
+  eInfoJmlSumbu_V.Text := '';
+  eInfoBB_V.Text := '';
+  eInfoNoFaktur_V.Text := '';
+  eInfoTglFaktur_V.Text := '';
+  eInfoAPM_V.Text := '';
+  eInfoKantorBeaCukai_V.Text := '';
+  eInfoNoSUT_V.Text := '';
+  eInfoNoTPT_V.Text := '';
+  eInfoKetLain2_V.Text := '';
+  eInfoNoPIB_V.Text := '';
+  eInfoTglPIB_V.Text := '';
+  eInfoNoFormAB_V.Text := '';
+  eInfoTglFormAB_V.Text := '';
+  eInfoDikeluarkanOleh_V.Text := '';
+  eInfoNRegBPKB2_V.Text := '';
+  cxPageControl1.ActivePage := cxTabSheet1;
+  eNoBPKB_V.SetFocus;
+end;
+
+procedure TfVerifikasiExLD.UpdateVerfikasi;
+var
+  uniSP : TUniStoredProc;
+begin
+  try
+    fWait.Show;
+    Application.ProcessMessages;
+    uniSP := TUniStoredProc.Create(Application);
+    uniSP.Connection := DM.dbSrv;
+    uniSP.Close;
+    uniSP.StoredProcName := 'bpkb_update_verifikasi';
+    try
+      uniSP.Params.Clear;
+      uniSP.Params.CreateParam(ftString,'v_berkas_id',ptInput).AsString := vBerkasID_V;
+      uniSP.Params.CreateParam(ftString,'v_op_id',ptInput).AsString := vIDPetugas;
+      uniSP.Params.CreateParam(ftString,'v_tgl_proses',ptInput).AsString := FormatDateTime('yyyymmdd',dtTgl.Date);
+      uniSP.Params.CreateParam(ftString,'RESULT',ptResult).Value;
+      uniSP.ExecProc;
+
+      if Copy(uniSP.Params.ParamValues['RESULT'],1,2)='00' then
+      begin
+        MessageDlgInformation('Proses Verifikasi berhasil');
+        bBaru_V.Click;
+      end
+      else if Copy(uniSP.Params.ParamValues['RESULT'],1,2)='14' then
+      begin
+        MessageDlgWarning('DATA TIDAK BISA DIVERIFIKASI, KERANA DATA SUDAH MENGALAMI PROSES VERIFIKASI');
+      end;
+    except on E:Exception do
+    begin
+      ErrorProgDialog('Error,..bpkb_get_data_bpkb_verifikasi.Open%Error :'+E.Message);
+    end;
+    end;
+  finally
+    FreeAndNil(uniSP);
+  end;
+end;
+
+procedure TfVerifikasiExLD.FormShow(Sender: TObject);
+begin
+  dtTgl.Date := TTglSrvSkr;
+  TampilAwal;
+end;
+
+procedure TfVerifikasiExLD.cxButton1Click(Sender: TObject);
+begin
+  if eNoBPKB_V.Text <> '' then
+  begin
+    if (eNoRangka_V.Text <> '') or (eNoBarcode_V.Text <> '') then
+    begin
+      fWait.Show;
+      fWait.Label1.Caption := 'Tunggu Sebentar ...';
+      fWait.cxProgressBar1.Visible := True;
+      CariData;
+    end
+    else
+    begin
+      MessageDlgWarning('Salah satu antara no rangka atau no barcode harus diisi');
+      eNoRangka_V.SetFocus;
+    end;
+  end
+  else
+  begin
+    MessageDlgWarning('No BPKB harus diisi');
+    eNoBPKB_V.SetFocus;
+  end;
+end;
+
+procedure TfVerifikasiExLD.bBaru_VClick(Sender: TObject);
+begin
+  TampilAwal;
+end;
+
+procedure TfVerifikasiExLD.bVerifikasiClick(Sender: TObject);
+begin
+  if MessageDlg('YAKIN DATA AKAN DI VERIFIKASI?',mtConfirmation,[mbYes,mbNo],0)=mrYes then
+     UpdateVerfikasi;
+end;
+
+end.

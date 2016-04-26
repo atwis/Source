@@ -1,0 +1,23 @@
+13:43:02:181 Gagal koneksi ke database 192.168.1.11:1521:ora11gError: NET: Network error (Cannot connect to server on host '192.168.1.11':
+A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+Socket Error Code: 10060($274C))<Host = 192.168.1.11:1521> 
+13:45:00:335 Gagal koneksi ke database 192.168.1.11:1521:ora11gError: NET: Network error (Cannot connect to server on host '192.168.1.11':
+A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+Socket Error Code: 10060($274C))<Host = 192.168.1.11:1521> 
+13:56:27:117 Error, ConnectDataBase --> NET: Network error (Cannot connect to server on host '192.168.117.128':
+A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+Socket Error Code: 10060($274C))<Host = 192.168.117.128:1521> 
+14:03:46:050 Error, ConnectDataBase --> NET: Network error (Cannot connect to server on host '192.168.117.128':
+A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+Socket Error Code: 10060($274C))<Host = 192.168.117.128:1521> 
+14:21:31:409 Error,..bpkb_pendaftaran_edit.ExecProc%Error :ORA-06550: line 2, column 14:
+PLS-00905: object DBSIFIK.BPKB_PENDAFTARAN_EDIT is invalid
+ORA-06550: line 2, column 3:
+PL/SQL: Statement ignored
+
+14:38:04:865 Error,..bpkb_pendaftaran_edit.ExecProc%Error :ORA-06550: line 2, column 14:
+PLS-00905: object DBSIFIK.BPKB_PENDAFTARAN_EDIT is invalid
+ORA-06550: line 2, column 3:
+PL/SQL: Statement ignored
+
+14:48:48:122 Error,..bpkb_get_registrasi.Open%Error :Cannot focus a disabled or invisible window

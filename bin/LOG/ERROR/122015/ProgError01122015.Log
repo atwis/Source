@@ -1,0 +1,12 @@
+09:41:03:145 Error, Create Alokasi NOPOL : DD 6708 LL, Ket error ORA-00001: unique constraint (DBSIFIK.T_NOPOL_C2) violated
+
+15:13:51:419 Error, ConnectDataBase --> NET: Network error (Cannot connect to server on host '222.124.27.171':
+A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+Socket Error Code: 10060($274C))<Host = 222.124.27.171:1521> 
+15:14:24:959 Error, ConnectDataBase --> NET: Network error (Cannot connect to server on host '222.124.27.171':
+A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+Socket Error Code: 10060($274C))<Host = 222.124.27.171:1521> 
+15:14:59:480 Error, ConnectDataBase --> NET: Network error (Cannot connect to server on host '222.124.27.171':
+A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+Socket Error Code: 10060($274C))<Host = 222.124.27.171:1521> 
+15:15:44:142 Error,..bpkb_login.Open%Error :List index out of bounds (1)

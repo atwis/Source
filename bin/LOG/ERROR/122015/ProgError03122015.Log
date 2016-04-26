@@ -1,0 +1,15 @@
+04:29:56:069 Error,..PG_SIMRANMOR_MATERIAL.insert_material.ExecProc Ket Error :ORA-06502: PL/SQL: numeric or value error: character string buffer too small
+ORA-06512: at "DBSIFIK.PG_SIMRANMOR_MATERIAL", line 289
+ORA-06502: PL/SQL: numeric or value error: character string buffer too small
+ORA-06512: at line 2
+
+04:30:56:200 Error,..PG_SIMRANMOR_MATERIAL.insert_material.ExecProc Ket Error :ORA-06502: PL/SQL: numeric or value error: character string buffer too small
+ORA-06512: at "DBSIFIK.PG_SIMRANMOR_MATERIAL", line 289
+ORA-06502: PL/SQL: numeric or value error: character string buffer too small
+ORA-06512: at line 2
+
+04:32:12:520 Error,..PG_SIMRANMOR_MATERIAL.insert_material.ExecProc Ket Error :ORA-06502: PL/SQL: numeric or value error: character string buffer too small
+ORA-06512: at "DBSIFIK.PG_SIMRANMOR_MATERIAL", line 289
+ORA-06502: PL/SQL: numeric or value error: character string buffer too small
+ORA-06512: at line 2
+

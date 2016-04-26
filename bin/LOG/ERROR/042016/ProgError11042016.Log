@@ -1,0 +1,8 @@
+22.04.42.200 Error,..bpkb_login.Open%Error :ORA-03113: end-of-file on communication channel
+
+22.08.02.264 Error, ConnectDataBase --> NET: Network error (Cannot connect to server on host '192.168.50.136':
+A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+Socket Error Code: 10060($274C))<Host = 192.168.50.136:1521> 
+22.38.30.693 Error, ConnectDataBase --> NET: Network error (Cannot connect to server on host '192.168.50.143':
+A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+Socket Error Code: 10060($274C))<Host = 192.168.50.143:1521> 

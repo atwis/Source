@@ -1,0 +1,12 @@
+14:52:38:534 Error... ORA-04063: package body "DBSIFIK.EXCEPTION_PKG" has errors
+ORA-06508: PL/SQL: could not find program unit being called: "DBSIFIK.EXCEPTION_PKG"
+ORA-06512: at "DBSIFIK.BPKB_SWITC_BPKB_BBN1", line 142
+ORA-00001: unique constraint (DBSIFIK.T_PENDAFTARAN2_C01) violated
+ORA-06512: at line 2
+
+15:06:01:622 Error... ORA-04063: package body "DBSIFIK.EXCEPTION_PKG" has errors
+ORA-06508: PL/SQL: could not find program unit being called: "DBSIFIK.EXCEPTION_PKG"
+ORA-06512: at "DBSIFIK.BPKB_SWITC_BPKB_BBN1", line 142
+ORA-00001: unique constraint (DBSIFIK.T_PENDAFTARAN2_C01) violated
+ORA-06512: at line 2
+

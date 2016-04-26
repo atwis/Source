@@ -1,0 +1,14 @@
+12:15:11:000 Error, ORA-06502: PL/SQL: numeric or value error: character to number conversion error
+ORA-06512: at "DBSIFIK.EXCEPTION_PKG", line 67
+ORA-06512: at "DBSIFIK.EXCEPTION_PKG", line 205
+ORA-06512: at "DBSIFIK.BPKB_GET_CETAK_BUKU2", line 57
+ORA-01422: exact fetch returns more than requested number of rows
+ORA-06512: at line 2
+
+12:29:03:945 Error, ORA-06502: PL/SQL: numeric or value error: character to number conversion error
+ORA-06512: at "DBSIFIK.EXCEPTION_PKG", line 67
+ORA-06512: at "DBSIFIK.EXCEPTION_PKG", line 205
+ORA-06512: at "DBSIFIK.BPKB_GET_CETAK_BUKU2", line 57
+ORA-01422: exact fetch returns more than requested number of rows
+ORA-06512: at line 2
+

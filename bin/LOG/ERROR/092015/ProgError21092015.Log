@@ -1,0 +1,6 @@
+14:23:32:509 Error, ConnectDataBase --> NET: Network error (Cannot connect to server on host '10.1.1.2':
+A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+Socket Error Code: 10060($274C))<Host = 10.1.1.2:1521> 
+20:32:53:923 Error, ConnectDataBase --> NET: Network error (Cannot connect to server on host '10.1.1.2':
+A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+Socket Error Code: 10060($274C))<Host = 10.1.1.2:1521> 

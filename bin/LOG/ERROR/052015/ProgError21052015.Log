@@ -1,0 +1,21 @@
+08:44:54:728 Error, ConnectDataBase --> NET: Network error (Cannot connect to server on host '203.130.203.196':
+A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+Socket Error Code: 10060($274C))<Host = 203.130.203.196:1521> 
+10:49:19:146 Error,..bpkb_create_label.ExecProc Ket Error :ORA-06502: PL/SQL: numeric or value error: character to number conversion error
+ORA-06512: at "DBSIFIK.EXCEPTION_PKG", line 67
+ORA-06512: at "DBSIFIK.EXCEPTION_PKG", line 205
+ORA-06512: at "DBSIFIK.BPKB_CREATE_LABEL", line 176
+ORA-20100: This no_bpkb already exists. The insert is cancelled.
+ORA-06512: at "DBSIFIK.CHECKDUP_TBERKAS_NO_BPKB", line 11
+ORA-04088: error during execution of trigger 'DBSIFIK.CHECKDUP_TBERKAS_NO_BPKB'
+ORA-06512: at line 2
+
+10:49:40:183 Error,..bpkb_create_label.ExecProc Ket Error :ORA-06502: PL/SQL: numeric or value error: character to number conversion error
+ORA-06512: at "DBSIFIK.EXCEPTION_PKG", line 67
+ORA-06512: at "DBSIFIK.EXCEPTION_PKG", line 205
+ORA-06512: at "DBSIFIK.BPKB_CREATE_LABEL", line 176
+ORA-20100: This no_bpkb already exists. The insert is cancelled.
+ORA-06512: at "DBSIFIK.CHECKDUP_TBERKAS_NO_BPKB", line 11
+ORA-04088: error during execution of trigger 'DBSIFIK.CHECKDUP_TBERKAS_NO_BPKB'
+ORA-06512: at line 2
+

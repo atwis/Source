@@ -1,0 +1,18 @@
+10.32.35.386 Error,..bpkb_get_data_bn.Open%Error :uniSPTampil: Field 'NO_BPKB' not found
+15.41.38.302 Error,..bpkb_get_registrasi_bn.Open%Error :SQL statement doesn't return rows
+15.44.47.771 Error,..bpkb_get_data_faktur_for_bn.Open%Error :ORA-20003: ORU-10036: object bpkb_get_data_faktur_for_bn is invalid and cannot be described
+ORA-06512: at "SYS.DBMS_DESCRIBE", line 147
+ORA-06512: at line 1
+
+15.46.03.548 Error,..bpkb_get_data_faktur_for_bn.Open%Error :ORA-20003: ORU-10036: object bpkb_get_data_faktur_for_bn is invalid and cannot be described
+ORA-06512: at "SYS.DBMS_DESCRIBE", line 147
+ORA-06512: at line 1
+
+22.09.57.366 Error,..bpkb_get_registrasi_bn.Open%Error :Field 'PEMOHON_NAMA' not found
+22.52.44.267 Error,..bpkb_get_data_bn.Open%Error :Field 'PREVBPKB_ID' not found
+22.53.10.444 Error,..bpkb_get_data_bn.Open%Error :Field 'PREVBPKB_ID' not found
+22.55.24.451 Error,..BPKB_EDIT.EXECPROG%Error :ORA-06550: line 2, column 14:
+PLS-00306: wrong number or types of arguments in call to 'BPKB_EDIT3_BN3'
+ORA-06550: line 2, column 3:
+PL/SQL: Statement ignored
+

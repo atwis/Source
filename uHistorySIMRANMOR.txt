@@ -1,0 +1,146 @@
+{*******************************************************************************
+  Program Aplikasi: RANMOR.EXE (SISTEM INFORMASI KENDARAAN BERMOTOR)
+  Dibuat Tanggal  : 01 Juli 2013
+  Modifikasi Tgl  :
+  Programmer      : Atwis AHS
+  Jenis           : FullOnline
+  Versi           :
+  Keterangan      :
+
+  Feature         :
+
+  Database        : Oracle (SIMRANMOR)
+  Table           : *> Management menu aplikasi :
+                        M_GROUP_HAK_AKSES
+                        M_GROUP_SUB_MENU_APLIKASI
+                        M_MENU_APLIKASI
+                    *> Master Material :
+                        M_MATERIAL
+                    *> Master Satuan dari material :
+                        M_SATUAN
+                    *> Master Konfik Aplikasi
+                        M_CONFIG_LAPORAN
+                    *> Table user admin :
+                        T_USER
+                    *> Table no urut transaksi :
+                        T_NODOC
+                    *> Transaksi Order Material
+                        T_ORDER_MATERIAL_H
+                        T_ORDER_MATERIAL_D
+                        TEMP_ORDER_MATERIAL_D
+                    *>
+************************************************************}
+1. Data untuk mengetahui/mengelompokan berdasarkan wilayah atau polres adalah
+   berdasarkan data yang ada di tabel t_berkas pada field kd_polda dan kd_polres
+2. Aturan dasar pembuatan label registrasi/no_registrasi kendaraan bermotor adalah:
+   R/L101009860/XI/2014/DITLLNTT
+   R/L701009860/XI/2014/DITLLNTT
+   1 : CHAR(1) --> R
+   2 : CHAR(2) --> /
+   3 : CHAR(3) --> SERI BUKU BPKB [L]
+   4 : CHAR(4) --> JENIS PENERBITAN (1 CHAR)->  1 : BBN1 / R2
+                                                2 : BBN1 / R4
+                                                3 : GANTI KEPEMILIKAN / R2
+                                                4 : GANTI KEPEMILIKAN / R4
+                                                5 : DUPLIKAT / R2
+                                                6 : DUPLIKAT / R4
+                                                7 : EX LUAR DAERAH / R2
+                                                8 : EX LUAR DAERAH / R4
+                                                
+   5 : CHAR(5) --> WILAYAH KERJA / POLRES (2 CHAR) ->   01 : POLRESTA KUPANG    ---> ** DATA BERASAL DATA TABEL M_POLRES **
+                                                        02 : POLRES TIMOR TENGAH SELATAN
+                                                        03 : POLRES TIMOR TENGAH UTARA
+                                                        04 : POLRES BELU
+                                                        05 : POLRES SUMBA TIMUR
+                                                        06 : POLRES SUMBA BARAT
+                                                        07 : POLRES ENDE
+                                                        08 : POLRES SIKKA
+                                                        09 : POLRES FLORES TIMUR
+                                                        10 : POLRES NGADA
+                                                        11 : POLRES MAGGARAI
+                                                        12 : POLRES ALOR
+                                                        13 : POLRES KUPANG
+                                                        14 : POLRES LEMBATA
+                                                        15 : POLRES ROTE NDAO
+                                                        16 : POLRES MAGGARAI BARAT
+   6 : CHAR(6) --> NO URUT REGISTRASI (6 CHAR) --> DIAWALI ANGKA 000001
+   7 : CHAR(7) --> /
+   8 : CHAR(8) --> BULAN REGISTRASI DALAM BENTUK ROMAWI
+   9 : CHAR(9) --> /
+   10 : CHAR(10) --> TAHUN (YYYY)
+   11 : CHAR(11) --> /
+   12 : CHAR(12) --> DIREKTORAT TEMPAT REGISTRASI BERADA : DITLLNTT
+3. IJIN TANDA TANGAN ADA DI FIELD PRINT_PERMIT PADA TABEL T_CHECKPOINT, JIKA NULL OR 0 BERARTI BLM ADA IJIN, JK 1 SUDAH ADA IJIN
+                                  PRINT_PERMIT_DATE UNTUK MENUNJUKKAN KAPAN IJIN PRINT DIKASIH
+4. KODE UNTUK IS_BBN2 ---> 0=KENDARAAN BARU; 1=GANTI NAMA; 2=MUTASI KELUAR; 3=EX LUAR DAERAH; 4=GANTI BUKU; 5=DUPLIKAT; 6=BBN2 PERUBAHAN, 7=PENGESAHAN; 8=5 TAHUNAN
+5. KODE PEMBAYARAN BRI YG DICIPTAKAKN OLEH SISTEM --> //1=BBN1; 9=BBN1 OTOMATIS; 2=BALIK NAMA; 3=DUPLIKAT; 4=GANTI BUKU; 5=EXL LUAR DAERAH; 6=MUTASI LD
+   T_PENDAFTARAN2 --> ENROLLMENT_TIPE ==> 1 : BBN1
+                                          2 : GANTI NAMA/BALIK NAMA
+                                          3 : MUTASI KELUAR
+                                          4 : EX LUAR DAERAH
+                                          5 : GANTI BUKU
+                                          6 : DUPLIKAT
+6. IDENTITAS PEMOHON ADA DI TABEL T_PENDAFTARAN2 PADA FIELD PEMOHON_ID
+7. BPKB_STATUS : 0 = TIDAK AKTIF
+                 1 = AKTIF
+                 2 = BLOKIR
+                 3 = MUTASI LUAR DAERAH
+8. TABLE T_SIGNATURE FIELD SIGN_TYPE
+                 1=BBN1 R2
+                 2=BBN1 R4
+                 3=Ganti Pemilik R2
+                 4=Ganti Pemilik R4
+                 5=Perubahan Identitas
+                 6=Mutasi Luar Daerah
+                 7=Ralat
+
+
+
+UPDATE SISTEM SESUAI KEBUTUHAN POLDA
+====================================
+1. IS CARI LANGSUNG PRINT BPKB PADA SETTING IS_CARI_LANGSUNG
+   vIsCariLangsung : 0 = dengan 2 kondisi harus dipenuhi
+                     1 = dengan 1 kondisi harus dipenuhi
+
+UPDATE TGL 15/12/2014
+=====================
+1. RUBAH LABEL DARI NO REGISTER MENJADI NO BPKB PADA FORM PEMBUATAN LABEL
+2. RUBAH PENCARI PADA FORM REGISTER MENJADI DEAFULT NO_BPKB
+
+UPDATE TGL 01/01/2015
+=====================
+1. PERBAIKAN PROSES "GetDataFaktur" PADA REGISTRASI_BN
+
+UPDATE TGL 14/01/2015
+======================
+1. PEMBUTALAN LABEL UNTUK PROSES MENAMPILKAN DATA DAPAT DI LIHAT DENGAN MEMILIH JENIS PENDAFTARAN TERLEBIH DAHULU
+2. MENYEMPURNAKAN PROSES BLOKIR KHSUSNYA UNTUK CETAK DATA BLOKIR
+3. MEMBERIKAN PROSES LOG PADA PENGHAPUSAN BERKAS LABEL
+
+UPDATE TGL 13/02/2015
+=====================
+1. PROSES PENCETAKAN SEBELUM DICETAK HARUS DI CEK PERBANDINGAN DATA ANTARA DATA MASTER KOORDINAT DENGAN
+   DATA ENTRYAN APAKAH SELISIHNYA CUMAN 1 CM ATAU LEBIH, JIKA LEBIH BERI PESAN PROSES PENCETAKAN TIDAK
+   BISA DILAKUKAN KARENA KOORDINATNYA TIDAK SESUAI/TERLALU PANJANG
+   PADA FUCNTION CekSelisihKoordinat
+   SIMPAN DATA TOLERANSI PADA TABEL T_CONFIG FIELD TOLERANSI_KOORDINAT(NUMBER (8))
+
+UPDATE TGL 28/04/2015 - (POLDA SULAWESI SELATAN)
+================================================
+1. MENGAKTIFKAN FUNGSI PENCARIAN DATA REGISTRASI BBN1 MENGGUNAKAN NO BPKB, DIMANA PROSES MELAKUKAN SCAN
+   PADA BUKU BPKB.
+   CARA SETTING : MASUK KE MENU SETTING APLIKASI - PILIH KEY BARCODE (NO BPKB)
+2. PENAMBAHAN MENU LOKET BRI PADA MENU ADMINISTRASI DATA
+   ADD FIELD PADA TABEL MENU_APLIKASI_BPKB
+       4	105	ADMINISTRASI DATA	Loket BRI	True
+3. PENAMBAHAN CONSTRAIN PADA TABEL T_NOPOL_KDWIL2
+   ADD FIELD KODE_POLDA;KODE_KAB;KODE_SERI
+   ADD CONSTRAIN UNIQ PADA KODE_WIL;KODE_KAB;KODE_POLDA;KODE_SERI
+4. CREATE TABLE T_NOPOL_BANK2
+5. CREATE TABLE T_REKOM
+
+UPDATE TGL 30/07/2015 - POLDA NTT & SULSEL
+==========================================
+1. PROSES PENGHAPUSAN BERKAS LABEL UNTUK FUNCTION DeleteRecord BISA TANPA HARUS NO BPKB
+2. UPDATE SP bri_create_label GANTI CHAR BRI MENJADI PNBP
+3. 

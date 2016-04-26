@@ -1,0 +1,4 @@
+10:30:55:069 Error, ConnectDataBase --> NET: Network error (Cannot connect to server on host '192.168.117.128':
+A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+Socket Error Code: 10060($274C))<Host = 192.168.117.128:1521> 
+10:31:09:241 Gagal koneksi ke database 10.1.1.2:1521:orclError: ORA-12505: TNS:listener does not currently know of SID given in connect descriptor

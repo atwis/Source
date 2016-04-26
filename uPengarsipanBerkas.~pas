@@ -1,0 +1,26 @@
+unit uPengarsipanBerkas;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, StdCtrls;
+
+type
+  TfPengarsipanBerkas = class(TForm)
+    Label1: TLabel;
+    Shape1: TShape;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fPengarsipanBerkas: TfPengarsipanBerkas;
+
+implementation
+
+{$R *.dfm}
+
+end.

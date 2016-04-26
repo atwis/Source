@@ -1,0 +1,51 @@
+unit uPolda;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, StdCtrls, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxStyles, dxSkinsCore, dxSkinsDefaultPainters,
+  dxSkinscxPCPainter, cxCustomData, cxFilter, cxData, cxDataStorage,
+  cxEdit, DB, cxDBData, DBCtrls, cxGridLevel, cxGridCustomTableView,
+  cxGridTableView, cxGridDBTableView, cxClasses, cxGridCustomView, cxGrid,
+  DBAccess, Uni, MemDS;
+
+type
+  TfPolda = class(TForm)
+    Label1: TLabel;
+    Shape1: TShape;
+    QPolda: TUniQuery;
+    dsQPolda: TUniDataSource;
+    cxGrid: TcxGrid;
+    cxGridDBTableView1: TcxGridDBTableView;
+    cxGridDBTableView1Column1: TcxGridDBColumn;
+    cxGridLevel1: TcxGridLevel;
+    DBNavigator1: TDBNavigator;
+    cxGridDBTableView1Column2: TcxGridDBColumn;
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fPolda: TfPolda;
+
+implementation
+Uses
+  uDM, uVariabel, uModul;
+{$R *.dfm}
+
+procedure TfPolda.FormShow(Sender: TObject);
+begin
+  with QPolda do
+  begin
+    Close;
+    SQL.Text := 'select * from m_polda order by polda_id';
+    Open;
+  end;
+end;
+
+end.

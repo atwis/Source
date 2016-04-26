@@ -1,0 +1,9 @@
+14.33.19.133 Error,..bpkb_get_list_ki%uniSPBiru%Error ORA-03113: end-of-file on communication channel
+
+14.51.10.652 Error. RefreshPilih..[Select] Ket error QHijau: Type mismatch for field 'BPKB_ID', expecting: Integer actual: Float
+14.56.26.318 Error. RefreshPilih..[Select] Ket error QHijau: Type mismatch for field 'BPKB_ID', expecting: Integer actual: Float
+14.57.43.438 Error. RefreshPilih..[Select] Ket error QHijau: Type mismatch for field 'BPKB_ID', expecting: Integer actual: Float
+15.00.02.529 Error. RefreshPilih..[Select] Ket error QHijau: Type mismatch for field 'BPKB_ID', expecting: Integer actual: Float
+15.54.39.178 Error... RefreshDataTemp. Ket Error Q: Type mismatch for field 'bpkb_id', expecting: Integer actual: Float
+15.55.43.327 Error... ORA-00001: unique constraint (DBSIFIK_KALSEL.SYS_C0013265) violated
+

@@ -1,0 +1,3 @@
+06:35:00:066 Error, ConnectDataBase --> NET: Network error (Cannot connect to server on host '203.130.203.195':
+A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+Socket Error Code: 10060($274C))<Host = 203.130.203.195:1521> 

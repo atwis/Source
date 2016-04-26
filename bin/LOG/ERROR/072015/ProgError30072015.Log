@@ -1,0 +1,23 @@
+22:26:37:216 Error,..bpkb_get_registrasi.Open%Error :Could not convert variant of type (Null) into type (String)
+22:26:52:661 Error,..bpkb_get_registrasi.Open%Error :Could not convert variant of type (Null) into type (String)
+22:31:07:638 Error,..bpkb_get_registrasi.Open%Error :Could not convert variant of type (Null) into type (String)
+22:38:33:938 Error,..bpkb_get_nopol2.Open%Error :ORA-06550: line 2, column 3:
+PLS-00306: wrong number or types of arguments in call to 'BPKB_GET_NOPOL2'
+ORA-06550: line 2, column 3:
+PL/SQL: Statement ignored
+
+22:41:08:244 Error,..bpkb_get_nopol2.Open%Error :ORA-06550: line 2, column 3:
+PLS-00306: wrong number or types of arguments in call to 'BPKB_GET_NOPOL2'
+ORA-06550: line 2, column 3:
+PL/SQL: Statement ignored
+
+22:42:16:559 Error,..bpkb_get_nopol2.Open%Error :ORA-06550: line 2, column 3:
+PLS-00306: wrong number or types of arguments in call to 'BPKB_GET_NOPOL2'
+ORA-06550: line 2, column 3:
+PL/SQL: Statement ignored
+
+22:42:30:586 Error,..bpkb_get_nopol2.Open%Error :ORA-06550: line 2, column 3:
+PLS-00306: wrong number or types of arguments in call to 'BPKB_GET_NOPOL2'
+ORA-06550: line 2, column 3:
+PL/SQL: Statement ignored
+

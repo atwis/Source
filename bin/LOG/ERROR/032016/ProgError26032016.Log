@@ -1,0 +1,6 @@
+08.38.43.355 Error... ORA-00001: unique constraint (DBSIFIK_KALSEL.SYS_C0013265) violated
+
+09.14.24.839 Error,..bpkb_add_blokir.Open%Error :ORA-20003: ORU-10036: object bpkb_add_blokir is invalid and cannot be described
+ORA-06512: at "SYS.DBMS_DESCRIBE", line 147
+ORA-06512: at line 1
+

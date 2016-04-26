@@ -1,0 +1,12 @@
+08:01:15:393 Error,..GetDataMaterialFromSever.Select M_MATERIAL. Ket Error : ORA-00942: table or view does not exist
+
+08:01:19:144 Error,..PG_SIMRANMOR_MATERIAL.show_input_material. Ket Error ORA-06550: line 2, column 3:
+PLS-00201: identifier 'PG_SIMRANMOR_MATERIAL.SHOW_INPUT_MATERIAL' must be declared
+ORA-06550: line 2, column 3:
+PL/SQL: Statement ignored
+
+08:07:23:990 Error,..PG_SIMRANMOR_MATERIAL.show_input_material. Ket Error ORA-06550: line 2, column 3:
+PLS-00201: identifier 'PG_SIMRANMOR_MATERIAL.SHOW_INPUT_MATERIAL' must be declared
+ORA-06550: line 2, column 3:
+PL/SQL: Statement ignored
+

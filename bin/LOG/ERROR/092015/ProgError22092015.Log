@@ -1,0 +1,48 @@
+00:08:56:048 Error, ConnectDataBase --> NET: Network error (Cannot connect to server on host '222.124.27.171':
+A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+Socket Error Code: 10060($274C))<Host = 222.124.27.171:1521> 
+05:43:28:026 Error... Insert APM/Dealer. Ket error ORA-00001: unique constraint (DBSIFIK.M_DEALER_C01) violated
+
+07:05:46:121 Error,..BPKB_ADD.Open%Error :ORA-04063: package body "DBSIFIK.EXCEPTION_PKG" has errors
+ORA-06508: PL/SQL: could not find program unit being called: "DBSIFIK.EXCEPTION_PKG"
+ORA-06512: at "DBSIFIK.BPKB_ADD3", line 906
+ORA-01400: cannot insert NULL into ("DBSIFIK"."M_PEKERJAAN"."PEKERJAAN_NAMA")
+ORA-06512: at line 2
+
+07:10:22:946 Error,..BPKB_ADD.Open%Error :Could not convert variant of type (Null) into type (Integer)
+07:12:38:693 Error,..BPKB_GET_PERMIT_TTD%Error ORA-04063: package body "DBSIFIK.EXCEPTION_PKG" has errors
+ORA-06508: PL/SQL: could not find program unit being called: "DBSIFIK.EXCEPTION_PKG"
+ORA-06512: at "DBSIFIK.BPKB_GET_PERMIT_TTD", line 58
+ORA-01400: cannot insert NULL into ("DBSIFIK"."T_IS_CETAKTTD"."NO_BPKB")
+ORA-06512: at line 2
+
+07:13:08:181 Error,..BPKB_GET_PERMIT_TTD%Error ORA-04063: package body "DBSIFIK.EXCEPTION_PKG" has errors
+ORA-06508: PL/SQL: could not find program unit being called: "DBSIFIK.EXCEPTION_PKG"
+ORA-06512: at "DBSIFIK.BPKB_GET_PERMIT_TTD", line 58
+ORA-01400: cannot insert NULL into ("DBSIFIK"."T_IS_CETAKTTD"."NO_BPKB")
+ORA-06512: at line 2
+
+07:15:49:652 Error,..BPKB_GET_PERMIT_TTD%Error ORA-04063: package body "DBSIFIK.EXCEPTION_PKG" has errors
+ORA-06508: PL/SQL: could not find program unit being called: "DBSIFIK.EXCEPTION_PKG"
+ORA-06512: at "DBSIFIK.BPKB_GET_PERMIT_TTD", line 58
+ORA-01400: cannot insert NULL into ("DBSIFIK"."T_IS_CETAKTTD"."NO_BPKB")
+ORA-06512: at line 2
+
+07:16:09:842 Error,..BPKB_GET_PERMIT_TTD%Error ORA-04063: package body "DBSIFIK.EXCEPTION_PKG" has errors
+ORA-06508: PL/SQL: could not find program unit being called: "DBSIFIK.EXCEPTION_PKG"
+ORA-06512: at "DBSIFIK.BPKB_GET_PERMIT_TTD", line 58
+ORA-01400: cannot insert NULL into ("DBSIFIK"."T_IS_CETAKTTD"."NO_BPKB")
+ORA-06512: at line 2
+
+11:32:40:221 Error, ConnectDataBase --> NET: Network error (Cannot connect to server on host '192.168.0.7':
+No connection could be made because the target machine actively refused it.
+Socket Error Code: 10061($274D))<Host = 192.168.0.7:1521> 
+11:33:03:939 Gagal koneksi ke database 192.168.0.7:1521:orclError: NET: Network error (Cannot connect to server on host '192.168.0.7':
+No connection could be made because the target machine actively refused it.
+Socket Error Code: 10061($274D))<Host = 192.168.0.7:1521> 
+11:35:16:770 Gagal koneksi ke database 192.168.0.7:1521:orclError: NET: Network error (Cannot connect to server on host '192.168.0.7':
+No connection could be made because the target machine actively refused it.
+Socket Error Code: 10061($274D))<Host = 192.168.0.7:1521> 
+12:01:22:894 Gagal koneksi ke database 192.168.0.7:1521:orclError: NET: Network error (Cannot connect to server on host '192.168.0.7':
+No connection could be made because the target machine actively refused it.
+Socket Error Code: 10061($274D))<Host = 192.168.0.7:1521> 

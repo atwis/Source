@@ -1,0 +1,16 @@
+program update_sinranmor;
+
+uses
+  Forms,
+  uMain in 'uMain.pas' {fMain},
+  uModul in '..\uModul.pas',
+  uVariabel in '..\uVariabel.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.Title := 'update';
+  Application.CreateForm(TfMain, fMain);
+  Application.Run;
+end.

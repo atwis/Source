@@ -1,0 +1,14 @@
+02:01:39:168 Error,..PG_SIMRANMOR_MATERIAL.insert_material.ExecProc Ket Error :ORA-06502: PL/SQL: numeric or value error: character string buffer too small
+ORA-06512: at "DBSIFIK.PG_SIMRANMOR_MATERIAL", line 290
+ORA-04098: trigger 'DBSIFIK.T_STOCK_KODE_ATR' is invalid and failed re-validation
+ORA-06512: at line 2
+
+02:03:54:421 Error,..PG_SIMRANMOR_MATERIAL.insert_material.ExecProc Ket Error :ORA-06502: PL/SQL: numeric or value error: character string buffer too small
+ORA-06512: at "DBSIFIK.PG_SIMRANMOR_MATERIAL", line 290
+ORA-04098: trigger 'DBSIFIK.T_STOCK_KODE_ATR' is invalid and failed re-validation
+ORA-06512: at line 2
+
+04:26:54:826 Error,..PG_SIMRANMOR_MATERIAL.show_pergerakan_stock_detail. Ket Error ORA-00918: column ambiguously defined
+
+04:29:27:392 Error,..PG_SIMRANMOR_MATERIAL.show_pergerakan_stock_detail. Ket Error ORA-00918: column ambiguously defined
+

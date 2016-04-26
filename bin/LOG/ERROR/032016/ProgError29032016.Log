@@ -1,0 +1,4 @@
+10.02.28.951 Gagal koneksi ke database 192.168.50.136:1521:ora11gError: ORA-01017: invalid username/password; logon denied
+
+10.55.45.342 Error, ConnectDataBase --> ORA-03113: end-of-file on communication channel
+

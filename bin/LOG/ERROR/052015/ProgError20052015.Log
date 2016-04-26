@@ -1,0 +1,23 @@
+12:53:02:208 Error,..bpkb_get_nopol2.Open%Error :ORA-06550: line 2, column 3:
+PLS-00201: identifier 'BPKB_GET_NOPOL2' must be declared
+ORA-06550: line 2, column 3:
+PL/SQL: Statement ignored
+
+12:54:29:299 Error,..bpkb_get_nopol2.Open%Error :ORA-06550: line 2, column 3:
+PLS-00201: identifier 'BPKB_GET_NOPOL2' must be declared
+ORA-06550: line 2, column 3:
+PL/SQL: Statement ignored
+
+12:54:53:291 Error,..bpkb_get_nopol2.Open%Error :ORA-06550: line 2, column 3:
+PLS-00201: identifier 'BPKB_GET_NOPOL2' must be declared
+ORA-06550: line 2, column 3:
+PL/SQL: Statement ignored
+
+13:04:24:721 Error,..bpkb_get_nopol2.Open%Error :ORA-06550: line 2, column 3:
+PLS-00201: identifier 'BPKB_GET_NOPOL2' must be declared
+ORA-06550: line 2, column 3:
+PL/SQL: Statement ignored
+
+22:33:39:265 Error, ConnectDataBase --> NET: Network error (Cannot connect to server on host '10.10.10.254':
+A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+Socket Error Code: 10060($274C))<Host = 10.10.10.254:1521> 
